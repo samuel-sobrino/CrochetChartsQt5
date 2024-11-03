@@ -428,7 +428,7 @@ StitchLibraryUi::printStitchSet()
     // paint cells
     for (int r = 0; r < rows; ++r)
     {
-        if (rowHeight + ui->listView->rowHeight(r) > (printer.pageRect().height() - 35))
+        if (rowHeight + ui->listView->rowHeight(r) > (printer.pageLayout().paintRectPixels(printer.resolution()).height() - 35))
         {
             printer.newPage();
             rowHeight = 35;

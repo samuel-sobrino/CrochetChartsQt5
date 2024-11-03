@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8.6)
+cmake_minimum_required(VERSION 3.20)
 if(APPLE OR WIN32)
     project("Crochet Charts")
 else()
@@ -23,7 +23,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules ${CMAKE_MODULE_P
 include(MacroOutOfSourceBuild)
 macro_ensure_out_of_source_build("${PROJECT_NAME} requires an out of source build.")
 
-set(CMAKE_CONFIGURATION_TYPES Debug Release Profile CACHE TYPE INTERNAL FORCE)
+set(CMAKE_CONFIGURATION_TYPES Debug Release Profile CACHE STRING INTERNAL FORCE)
 if(CMAKE_BUILD_TYPE STREQUAL "")
     set(CMAKE_BUILD_TYPE "Debug")
 endif()

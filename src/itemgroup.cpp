@@ -60,13 +60,13 @@ ItemGroup::isGrouped()
 {
     if (parentItem())
     {
-        if (parentItem()->Type == ItemGroup::Type)
+        // Check if parentItem is of type ItemGroup
+        if (ItemGroup* group = dynamic_cast<ItemGroup*>(parentItem()))
         {
-            return true;
+            return true; // Return true if the parent item is an ItemGroup
         }
     }
-
-    return false;
+    return false; // Return false if there is no parent or it's not an ItemGroup
 }
 
 void

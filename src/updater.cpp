@@ -115,6 +115,7 @@ Updater::httpFinished()
             mProgDialog->setLabelText(tr("Parsing response..."));
 
             const QStringList urls = data.split("::", QString::SkipEmptyParts);
+
             if (urls.count() == 2)
             {
                 QMessageBox msgbox(this);

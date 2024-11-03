@@ -31,6 +31,7 @@
 
 #include <QPrinter>       //for pdf
 #include <QSvgGenerator>  //for svg
+#include <QPageSize>
 
 #include "crochettab.h"
 #include "scene.h"  // for to connect the scene to the view.
@@ -468,7 +469,12 @@ ExportUi::exportLegendPdf()
 
     QSizeF size = scene->sceneRect().size();
     if (pageToChartSize)
-        printer->setPaperSize(size, QPrinter::Point);
+    {
+        // Convert QSizeF from points to millimeters (assuming 72 DPI for points conversion)
+        QSizeF sizeInMM(size.width() * 25.4 / 72, size.height() * 25.4 / 72);
+        QPageSize pageSize(sizeInMM, QPageSize::Millimeter);
+        printer->setPageSize(pageSize);
+    }
 
     p->begin(printer);
 
@@ -578,7 +584,12 @@ ExportUi::exportPdf()
 
     QSizeF size = ui->view->scene()->sceneRect().size();
     if (pageToChartSize)
-        printer->setPaperSize(size, QPrinter::Point);
+    {
+        // Convert QSizeF from points to millimeters (assuming 72 DPI for points conversion)
+        QSizeF sizeInMM(size.width() * 25.4 / 72, size.height() * 25.4 / 72);
+        QPageSize pageSize(sizeInMM, QPageSize::Millimeter); // Use Millimeter for the unit
+        printer->setPageSize(pageSize);
+    }
 
     p->begin(printer);
 

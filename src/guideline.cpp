@@ -22,11 +22,14 @@
 
 #include <QDebug>
 #include <QGraphicsSceneMouseEvent>
+#include <QGraphicsEllipseItem>
+#include <QGraphicsItem>
 
 Guideline::Guideline(const QRectF& rect, QGraphicsItem* parent, QGraphicsScene* /*scene*/)
     : QGraphicsEllipseItem(rect, parent)
 {
-    setAcceptedMouseButtons(0);
+    // Use default constructor to set accepted mouse buttons to an empty state
+    setAcceptedMouseButtons(QFlags<Qt::MouseButton>());
 }
 
 void
